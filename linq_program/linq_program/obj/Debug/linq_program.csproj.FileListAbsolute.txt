@@ -1,0 +1,11 @@
+X:\GIT\LINQ\linq_program\linq_program\bin\Debug\linq_program.exe.config
+X:\GIT\LINQ\linq_program\linq_program\bin\Debug\linq_program.exe
+X:\GIT\LINQ\linq_program\linq_program\bin\Debug\linq_program.pdb
+X:\GIT\LINQ\linq_program\linq_program\obj\Debug\linq_program.csproj.AssemblyReference.cache
+X:\GIT\LINQ\linq_program\linq_program\obj\Debug\linq_program.csproj.SuggestedBindingRedirects.cache
+X:\GIT\LINQ\linq_program\linq_program\obj\Debug\linq_program.Form1.resources
+X:\GIT\LINQ\linq_program\linq_program\obj\Debug\linq_program.Properties.Resources.resources
+X:\GIT\LINQ\linq_program\linq_program\obj\Debug\linq_program.csproj.GenerateResource.cache
+X:\GIT\LINQ\linq_program\linq_program\obj\Debug\linq_program.csproj.CoreCompileInputs.cache
+X:\GIT\LINQ\linq_program\linq_program\obj\Debug\linq_program.exe
+X:\GIT\LINQ\linq_program\linq_program\obj\Debug\linq_program.pdb

@@ -22,39 +22,65 @@ namespace linq_program
 
         private void letsClick(object sender, MouseEventArgs e)
         {
-            
+            dataGridView1.Visible = true;
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "linq.csv");
+
             
             if (File.Exists(filePath))
             {
                 DataTable dt = new DataTable();
-                string[] lines = File.ReadAllLines(filePath);
-                if (lines.Length > 1)
+                var lines = File.ReadLines(filePath).Select(line => line.Split(','));
+                var headers = lines.First();
+                int numColumns = headers.Length;
+                foreach (var header in headers)
                 {
-                    string[] headers = lines[0].Split(',');
-                    int numColumns = headers.Length;
+                    dt.Columns.Add(header);
+                }
+                var data = lines.Skip(1);
+                foreach (var line in data)
+                {
+                    DataRow row = dt.NewRow();
                     for (int i = 0; i < numColumns; i++)
                     {
-                        dt.Columns.Add(headers[i]);
+                        row[i] = line[i];
                     }
-                    for (int i = 1; i <= lines.Length - 1; i++)
-                    {
-                        string[] lineData = lines[i].Split(',');
-                        DataRow row = dt.NewRow();
-                        for (int j = 0; j < numColumns; j++)
-                        {
-                            row[j] = lineData[j];
-                        }
-                        dt.Rows.Add(row);
-                    }
-                    dataGridView1.DataSource = dt;
+                    dt.Rows.Add(row);
                 }
+                dataGridView1.DataSource = dt;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Visible = true;
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "linq.csv");
+            if (File.Exists(filePath))
+            {
+                DataTable dt = new DataTable();
+                var lines = File.ReadLines(filePath).Select(line => line.Split(','));
+                var headers = lines.First();
+                int numColumns = headers.Length;
+                foreach (var header in headers)
+                {
+                    dt.Columns.Add(header);
+                }
+                var data = lines.Skip(1).Where(fields => fields[5] == "developer");
+                foreach (var line in data)
+                {
+                    DataRow row = dt.NewRow();
+                    for (int i = 0; i < numColumns; i++)
+                    {
+                        row[i] = line[i];
+                    }
+                    dt.Rows.Add(row);
+                }
+                dataGridView1.DataSource = dt;
+            }
         }
     }
 }
