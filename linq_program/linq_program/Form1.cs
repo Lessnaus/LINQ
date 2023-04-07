@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -93,16 +95,25 @@ namespace linq_program
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
-            string sortColumnName = comboBox4.SelectedItem.ToString();
 
-            var sortedData = dataGridView1.Rows.Cast<DataGridViewRow>()
-                                     .OrderBy(r => r.Cells[sortColumnName].Value)
-                                     .ToList();
 
-            dataGridView1.Rows.Clear();
-            foreach (var row in sortedData)
+            // Pobierz kolumnę, według której sortować, z combobox1
+            string columnName = comboBox4.SelectedItem.ToString();
+            string sortType = comboBox5.SelectedItem.ToString();
+            // Znajdź kolumnę o podanej nazwie
+            DataGridViewColumn column = dataGridView1.Columns
+                .Cast<DataGridViewColumn>()
+                .FirstOrDefault(col => col.HeaderText == columnName);
+
+            // Sortuj dane w dataGridView1 według wybranej kolumny
+            if (sortType == "Alfabetycznie")
             {
-                dataGridView1.Rows.Add(row);
+                dataGridView1.Sort(column, ListSortDirection.Ascending);
+            }
+            else
+            {
+                dataGridView1.Sort(column, ListSortDirection.Descending);
+
             }
         }
 
