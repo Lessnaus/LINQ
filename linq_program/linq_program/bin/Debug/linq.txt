@@ -1,0 +1,14 @@
+Sortowanie: firstname Alfabetycznie = System.Windows.Forms.DataGridView
+Sortowanie: profession Alfabetycznie = System.Windows.Forms.DataGridView
+Sortowanie: Wedłóg: lastname; Jak: Odwrotne ; Wynik: System.Windows.Forms.DataGridView
+Sortowanie: Wedłóg: lastname; Jak: Alfabetycznie; Wynik: 1106;Adore;Wilona;Adore.Wilona@yopmail.com;Adore.Wilona@gmail.com;developer
+
+Sortowanie: Wedłóg: lastname; Jak: Odwrotne ; Wynik: 243;Abbie;Magnolia;Abbie.Magnolia@yopmail.com;Abbie.Magnolia@gmail.com;doctor
+
+Sortowanie: Wedłóg: lastname; Jak: Odwrotne ; Wynik: 633;Adele;Xerxes;Adele.Xerxes@yopmail.com;Adele.Xerxes@gmail.com;developer
+795;Adele;Si;Adele.Si@yopmail.com;Adele.Si@gmail.com;doctor
+1163;Adele;Roscoe;Adele.Roscoe@yopmail.com;Adele.Roscoe@gmail.com;worker
+1643;Adele;Kesley;Adele.Kesley@yopmail.com;Adele.Kesley@gmail.com;developer
+1237;Adele;Dyche;Adele.Dyche@yopmail.com;Adele.Dyche@gmail.com;police officer
+419;Adele;Dichy;Adele.Dichy@yopmail.com;Adele.Dichy@gmail.com;police officer
+

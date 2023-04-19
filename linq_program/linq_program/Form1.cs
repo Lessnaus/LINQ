@@ -4,6 +4,15 @@ using System.ComponentModel;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+using System;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
 using System.Windows.Forms;
 
 
@@ -47,7 +56,7 @@ namespace linq_program
                 string filter1 = comboBox1.Text;
                 string filter2 = comboBox2.Text;
                 string filter3 = comboBox3.Text;
-                label1.Text = filter1+ filter2;
+                
                 var data = lines.Skip(1)
      .Where(fields => (string.IsNullOrEmpty(filter2) || fields[1] == filter2) &&
                       (string.IsNullOrEmpty(filter1) || fields[5] == filter1) &&
@@ -95,7 +104,7 @@ namespace linq_program
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
-
+            string czynnosc = "Sortowanie";
 
             // Pobierz kolumnę, według której sortować, z combobox1
             string columnName = comboBox4.SelectedItem.ToString();
@@ -114,6 +123,63 @@ namespace linq_program
             {
                 dataGridView1.Sort(column, ListSortDirection.Descending);
 
+            }
+            var wynik = new Wynik
+            {
+                Czynnosc = "sortowanie",
+                Wedlug = "firstname",
+                Jak = "alfabetycznie",
+                Wyniki = dataGridView1.Rows.Cast<DataGridViewRow>()
+        .Where(r => !r.IsNewRow)
+        .OrderBy(r => r.Cells["firstname"].Value.ToString())
+        .Select(r => new Dane
+        {
+            id = Convert.ToInt32(r.Cells["id"].Value),
+            firstname = r.Cells["firstname"].Value.ToString(),
+            lastname = r.Cells["lastname"].Value.ToString(),
+            email = r.Cells["email"].Value.ToString(),
+            email2 = r.Cells["email2"].Value.ToString(),
+            profession = r.Cells["profession"].Value.ToString()
+        })
+        .ToList()
+            };
+
+            // Serializacja do formatu JSON
+            string json = JsonConvert.SerializeObject(wynik, Formatting.Indented);
+
+            // Dodanie wyniku do pliku
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wyniki.json");
+            File.AppendAllText(filePath, json + Environment.NewLine);
+
+
+
+            try
+            {
+                string filePath = "dane.json";
+                string jsonString = File.ReadAllText(filePath);
+                JsonDocument jsonDocument = JsonDocument.Parse(jsonString);
+
+                // Pobranie tablicy Wyniki z pliku JSON
+                JsonElement wynikiElement = jsonDocument.RootElement.GetProperty("Wyniki");
+                if (wynikiElement.ValueKind != JsonValueKind.Array)
+                {
+                    throw new Exception("Błąd formatu pliku JSON");
+                }
+
+                // Pobranie ostatniego wpisu z tablicy Wyniki
+                JsonElement lastElement = wynikiElement.EnumerateArray().LastOrDefault();
+
+                // Wyświetlenie danych z ostatniego wpisu w kontrolce Label
+                lblLastResult.Text = $"id: {lastElement.GetProperty("id").GetInt32()}, " +
+                    $"firstname: {lastElement.GetProperty("firstname").GetString()}, " +
+                    $"lastname: {lastElement.GetProperty("lastname").GetString()}, " +
+                    $"email: {lastElement.GetProperty("email").GetString()}, " +
+                    $"email2: {lastElement.GetProperty("email2").GetString()}, " +
+                    $"profession: {lastElement.GetProperty("profession").GetString()}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Wystąpił błąd: {ex.Message}");
             }
         }
 
@@ -151,6 +217,52 @@ namespace linq_program
         private void button3_Click(object sender, EventArgs e)
         {
 
+        }
+        private void saveResult(string czynnosc, string wedlug, string jak, string result)
+        {
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "linq.txt");
+
+
+            using (StreamWriter sw = new StreamWriter(filePath, true))
+            {
+                sw.WriteLine(czynnosc + ": Wedłóg: " + wedlug + "; Jak: " + jak + "; Wynik: " + result);
+            }
+            //display the last 5 lines of the file result.txt in label2
+            string[] lines = File.ReadAllLines(filePath);
+            int count = lines.Length;
+            if (count > 5)
+            {
+                for (int i = count - 5; i < count; i++)
+                {
+                    label8.Text += lines[i] + Environment.NewLine;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    label8.Text += lines[i] + Environment.NewLine;
+                }
+            }
+
+        }
+        public class Wynik
+        {
+            public string Czynnosc { get; set; }
+            public string Wedlug { get; set; }
+            public string Jak { get; set; }
+            public List<Dane> Wyniki { get; set; }
+        }
+
+        // Definicja obiektu z danymi z DataGridView
+        public class Dane
+        {
+            public int id { get; set; }
+            public string firstname { get; set; }
+            public string lastname { get; set; }
+            public string email { get; set; }
+            public string email2 { get; set; }
+            public string profession { get; set; }
         }
     }
 }

@@ -1,0 +1,62 @@
+{
+  "Czynnosc": "sortowanie",
+  "Wedlug": "firstname",
+  "Jak": "alfabetycznie",
+  "Wyniki": [
+    {
+      "id": 116,
+      "firstname": "Ada",
+      "lastname": "Sidonius",
+      "email": "Ada.Sidonius@yopmail.com",
+      "email2": "Ada.Sidonius@gmail.com",
+      "profession": "doctor"
+    },
+    {
+      "id": 1190,
+      "firstname": "Ada",
+      "lastname": "Candy",
+      "email": "Ada.Candy@yopmail.com",
+      "email2": "Ada.Candy@gmail.com",
+      "profession": "worker"
+    },
+    {
+      "id": 1942,
+      "firstname": "Ada",
+      "lastname": "Gladstone",
+      "email": "Ada.Gladstone@yopmail.com",
+      "email2": "Ada.Gladstone@gmail.com",
+      "profession": "developer"
+    }
+  ]
+}
+{
+  "Czynnosc": "sortowanie",
+  "Wedlug": "firstname",
+  "Jak": "alfabetycznie",
+  "Wyniki": [
+    {
+      "id": 116,
+      "firstname": "Ada",
+      "lastname": "Sidonius",
+      "email": "Ada.Sidonius@yopmail.com",
+      "email2": "Ada.Sidonius@gmail.com",
+      "profession": "doctor"
+    },
+    {
+      "id": 1190,
+      "firstname": "Ada",
+      "lastname": "Candy",
+      "email": "Ada.Candy@yopmail.com",
+      "email2": "Ada.Candy@gmail.com",
+      "profession": "worker"
+    },
+    {
+      "id": 1942,
+      "firstname": "Ada",
+      "lastname": "Gladstone",
+      "email": "Ada.Gladstone@yopmail.com",
+      "email2": "Ada.Gladstone@gmail.com",
+      "profession": "developer"
+    }
+  ]
+}

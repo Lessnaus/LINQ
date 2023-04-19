@@ -9,3 +9,7 @@ X:\GIT\LINQ\linq_program\linq_program\obj\Debug\linq_program.csproj.GenerateReso
 X:\GIT\LINQ\linq_program\linq_program\obj\Debug\linq_program.csproj.CoreCompileInputs.cache
 X:\GIT\LINQ\linq_program\linq_program\obj\Debug\linq_program.exe
 X:\GIT\LINQ\linq_program\linq_program\obj\Debug\linq_program.pdb
+X:\GIT\LINQ\linq_program\linq_program\bin\Debug\Microsoft.Bcl.HashCode.dll
+X:\GIT\LINQ\linq_program\linq_program\obj\Debug\linq_program.csproj.CopyComplete
+X:\GIT\LINQ\linq_program\linq_program\bin\Debug\Newtonsoft.Json.dll
+X:\GIT\LINQ\linq_program\linq_program\bin\Debug\Newtonsoft.Json.xml
