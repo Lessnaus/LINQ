@@ -13,7 +13,9 @@ using System.Windows.Forms;
 namespace linq_program
 {
     public partial class Form1 : Form
+
     {
+
         public Form1()
         {
             InitializeComponent();
@@ -36,7 +38,8 @@ namespace linq_program
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "linq.csv");
             string savePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wyniki.txt");
 
-
+            DateTime currentDateTime = DateTime.Now;
+            string currentDateTimeString = currentDateTime.ToString("yyyy-MM-dd HH:mm:ss");
 
 
             if (File.Exists(filePath))
@@ -85,7 +88,7 @@ namespace linq_program
 
                 using (StreamWriter sw = new StreamWriter(savePath, true))
                 {
-                    sw.WriteLine("Filtrowanie" + "; " + filter1 + "; " + filter2 + "; " + filter3  + "; "+ sb + "[] ");
+                    sw.WriteLine(currentDateTimeString + "; " + "Filtrowanie" + "; " + filter1 + "; " + filter2 + "; " + filter3  + "; "+ sb + "[] ");
                 }
                 //display the last 5 lines of the file result.txt in label2
 
@@ -145,7 +148,8 @@ namespace linq_program
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
-            
+            DateTime currentDateTime = DateTime.Now;
+            string currentDateTimeString = currentDateTime.ToString("yyyy-MM-dd HH:mm:ss");
             string savePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wyniki.txt");
             // Pobierz kolumnę, według której sortować, z combobox1
             string columnName = comboBox4.SelectedItem.ToString();
@@ -183,7 +187,7 @@ namespace linq_program
 
             using (StreamWriter sw = new StreamWriter(savePath, true))
             {
-                sw.WriteLine("Sortowanie" + "; " + columnName + "; " + sortType + "; " + sb + "[] ");
+                sw.WriteLine(currentDateTimeString + "; " +  "Sortowanie" + "; " + columnName + "; " + sortType + "; " + sb + "[] ");
             }
             //display the last 5 lines of the file result.txt in label2
 
@@ -247,7 +251,8 @@ namespace linq_program
             int startId = int.Parse(textBox1.Text);
             int endId = int.Parse(textBox2.Text);
             string savePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wyniki.txt");
-
+            DateTime currentDateTime = DateTime.Now;
+            string currentDateTimeString = currentDateTime.ToString("yyyy-MM-dd HH:mm:ss");
 
 
             DataTable dt = ((DataTable)dataGridView1.DataSource).Clone();
@@ -278,7 +283,7 @@ namespace linq_program
 
             using (StreamWriter sw = new StreamWriter(savePath, true))
             {
-                sw.WriteLine("Wybieranie" + "; od: " + startId + "; do: " + endId + "; " + sb + "[] ");
+                sw.WriteLine(currentDateTimeString + "; " +  "Wybieranie" + "; od: " + startId + "; do: " + endId + "; " + sb + "[] ");
             }
             //display the last 5 lines of the file result.txt in label2
 
@@ -305,51 +310,7 @@ namespace linq_program
             }
 
         }
-        private void saveResult(string czynnosc, string wedlug, string jak, string result)
-        {
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "linq.txt");
-
-
-            using (StreamWriter sw = new StreamWriter(filePath, true))
-            {
-                sw.WriteLine(czynnosc + ": Wedłóg: " + wedlug + "; Jak: " + jak + "; Wynik: " + result);
-            }
-            //display the last 5 lines of the file result.txt in label2
-            string[] lines = File.ReadAllLines(filePath);
-            int count = lines.Length;
-            if (count > 5)
-            {
-                for (int i = count - 5; i < count; i++)
-                {
-                    label8.Text += lines[i] + Environment.NewLine;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < count; i++)
-                {
-                    label8.Text += lines[i] + Environment.NewLine;
-                }
-            }
-
-        }
-        public class Wynik
-        {
-            public string Czynnosc { get; set; }
-            public string Wedlug { get; set; }
-            public string Jak { get; set; }
-            public string Wyniki { get; set; }
-        }
-
-        // Definicja obiektu z danymi z DataGridView
-        public class Dane
-        {
-            public int id { get; set; }
-            public string firstname { get; set; }
-            public string lastname { get; set; }
-            public string email { get; set; }
-            public string email2 { get; set; }
-            public string profession { get; set; }
-        }
+      
+        
     }
 }
