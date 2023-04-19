@@ -5,14 +5,6 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using System;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
 using System.Windows.Forms;
 
 
@@ -38,10 +30,17 @@ namespace linq_program
 
         private void button2_Click(object sender, EventArgs e)
         {
+            String czynnosc = "Filtr";
+            String imie = "";
+            String nazwisko = "";
+            String stanowisko = "";
+
             dataGridView1.Visible = true;
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "linq.csv");
+            string savePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wyniki.txt");
 
-           
+
+
 
             if (File.Exists(filePath))
             {
@@ -56,7 +55,7 @@ namespace linq_program
                 string filter1 = comboBox1.Text;
                 string filter2 = comboBox2.Text;
                 string filter3 = comboBox3.Text;
-                
+
                 var data = lines.Skip(1)
      .Where(fields => (string.IsNullOrEmpty(filter2) || fields[1] == filter2) &&
                       (string.IsNullOrEmpty(filter1) || fields[5] == filter1) &&
@@ -72,7 +71,52 @@ namespace linq_program
                     dt.Rows.Add(row);
                 }
                 dataGridView1.DataSource = dt;
+                StringBuilder sb = new StringBuilder();
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            sb.Append(cell.Value != null ? cell.Value.ToString() : "");
+                            sb.Append(",");
+                        }
+                        sb.AppendLine();
+                    }
+                }
+
+
+                using (StreamWriter sw = new StreamWriter(savePath, true))
+                {
+                    sw.WriteLine("Filtrowanie" + "; " + filter1 + "; " + filter2 + "; " + filter3  + "; "+ sb + "[] ");
+                }
+                //display the last 5 lines of the file result.txt in label2
+
+                string linesxd = File.ReadAllText(savePath);
+                string[] separator = { "[]" };
+                string[] linesx = linesxd.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+
+                int count = linesx.Length;
+                label9.Text = "";
+                if (count > 6)
+                {
+                    for (int i = count-1; i > count-7; i--)
+                    {
+                        label9.Text += linesx[i] + Environment.NewLine;
+                    }
+                }
+                else
+                {
+                    for (int i = count-1; i > -1; i--)
+                    {
+                        label9.Text += linesx[i] + Environment.NewLine;
+                    }
+                }
+
+
             }
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -105,7 +149,7 @@ namespace linq_program
         private void buttonSort_Click(object sender, EventArgs e)
         {
             string czynnosc = "Sortowanie";
-
+            string savePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wyniki.txt");
             // Pobierz kolumnę, według której sortować, z combobox1
             string columnName = comboBox4.SelectedItem.ToString();
             string sortType = comboBox5.SelectedItem.ToString();
@@ -124,63 +168,50 @@ namespace linq_program
                 dataGridView1.Sort(column, ListSortDirection.Descending);
 
             }
-            var wynik = new Wynik
+
+            StringBuilder sb = new StringBuilder();
+            foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                Czynnosc = "sortowanie",
-                Wedlug = "firstname",
-                Jak = "alfabetycznie",
-                Wyniki = dataGridView1.Rows.Cast<DataGridViewRow>()
-        .Where(r => !r.IsNewRow)
-        .OrderBy(r => r.Cells["firstname"].Value.ToString())
-        .Select(r => new Dane
-        {
-            id = Convert.ToInt32(r.Cells["id"].Value),
-            firstname = r.Cells["firstname"].Value.ToString(),
-            lastname = r.Cells["lastname"].Value.ToString(),
-            email = r.Cells["email"].Value.ToString(),
-            email2 = r.Cells["email2"].Value.ToString(),
-            profession = r.Cells["profession"].Value.ToString()
-        })
-        .ToList()
-            };
-
-            // Serializacja do formatu JSON
-            string json = JsonConvert.SerializeObject(wynik, Formatting.Indented);
-
-            // Dodanie wyniku do pliku
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wyniki.json");
-            File.AppendAllText(filePath, json + Environment.NewLine);
-
-
-
-            try
-            {
-                string filePath = "dane.json";
-                string jsonString = File.ReadAllText(filePath);
-                JsonDocument jsonDocument = JsonDocument.Parse(jsonString);
-
-                // Pobranie tablicy Wyniki z pliku JSON
-                JsonElement wynikiElement = jsonDocument.RootElement.GetProperty("Wyniki");
-                if (wynikiElement.ValueKind != JsonValueKind.Array)
+                if (!row.IsNewRow)
                 {
-                    throw new Exception("Błąd formatu pliku JSON");
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        sb.Append(cell.Value != null ? cell.Value.ToString() : "");
+                        sb.Append(",");
+                    }
+                    sb.AppendLine();
                 }
-
-                // Pobranie ostatniego wpisu z tablicy Wyniki
-                JsonElement lastElement = wynikiElement.EnumerateArray().LastOrDefault();
-
-                // Wyświetlenie danych z ostatniego wpisu w kontrolce Label
-                lblLastResult.Text = $"id: {lastElement.GetProperty("id").GetInt32()}, " +
-                    $"firstname: {lastElement.GetProperty("firstname").GetString()}, " +
-                    $"lastname: {lastElement.GetProperty("lastname").GetString()}, " +
-                    $"email: {lastElement.GetProperty("email").GetString()}, " +
-                    $"email2: {lastElement.GetProperty("email2").GetString()}, " +
-                    $"profession: {lastElement.GetProperty("profession").GetString()}";
             }
-            catch (Exception ex)
+
+
+            using (StreamWriter sw = new StreamWriter(savePath, true))
             {
-                MessageBox.Show($"Wystąpił błąd: {ex.Message}");
+                sw.WriteLine("Sortowanie" + "; " + columnName + "; " + sortType + "; " + sb + "[] ");
             }
+            //display the last 5 lines of the file result.txt in label2
+
+            string linesxd = File.ReadAllText(savePath);
+            string[] separator = { "[]" };
+            string[] linesx = linesxd.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+
+            int count = linesx.Length;
+
+            label9.Text = "";
+            if (count > 6)
+            {
+                for (int i = count - 1; i > count - 7; i--)
+                {
+                    label9.Text += linesx[i] + Environment.NewLine;
+                }
+            }
+            else
+            {
+                for (int i = count - 1; i > -1; i--)
+                {
+                    label9.Text += linesx[i] + Environment.NewLine;
+                }
+            }
+
         }
 
         private void letsClick(object sender, EventArgs e)
@@ -216,6 +247,65 @@ namespace linq_program
 
         private void button3_Click(object sender, EventArgs e)
         {
+            int startId = int.Parse(textBox1.Text);
+            int endId = int.Parse(textBox2.Text);
+            string savePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wyniki.txt");
+
+
+
+            DataTable dt = ((DataTable)dataGridView1.DataSource).Clone();
+            foreach (DataRow row in ((DataTable)dataGridView1.DataSource).Rows)
+            {
+                int id = int.Parse(row["id"].ToString());
+                if (id >= startId && id <= endId)
+                {
+                    dt.ImportRow(row);
+                }
+            }
+            dataGridView1.DataSource = dt;
+
+            StringBuilder sb = new StringBuilder();
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        sb.Append(cell.Value != null ? cell.Value.ToString() : "");
+                        sb.Append(",");
+                    }
+                    sb.AppendLine();
+                }
+            }
+
+
+            using (StreamWriter sw = new StreamWriter(savePath, true))
+            {
+                sw.WriteLine("Wybieranie" + "; od: " + startId + "; do: " + endId + "; " + sb + "[] ");
+            }
+            //display the last 5 lines of the file result.txt in label2
+
+            string linesxd = File.ReadAllText(savePath);
+            string[] separator = { "[]" };
+            string[] linesx = linesxd.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+
+            int count = linesx.Length;
+
+            label9.Text = "";
+            if (count > 6)
+            {
+                for (int i = count - 1; i > count - 7; i--)
+                {
+                    label9.Text += linesx[i] + Environment.NewLine;
+                }
+            }
+            else
+            {
+                for (int i = count - 1; i > -1; i--)
+                {
+                    label9.Text += linesx[i] + Environment.NewLine;
+                }
+            }
 
         }
         private void saveResult(string czynnosc, string wedlug, string jak, string result)
@@ -251,7 +341,7 @@ namespace linq_program
             public string Czynnosc { get; set; }
             public string Wedlug { get; set; }
             public string Jak { get; set; }
-            public List<Dane> Wyniki { get; set; }
+            public string Wyniki { get; set; }
         }
 
         // Definicja obiektu z danymi z DataGridView

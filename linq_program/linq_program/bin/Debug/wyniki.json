@@ -60,3 +60,16 @@
     }
   ]
 }
+{"Czynnosc":"sortowanie","Wedlug":"firstname","Jak":"alfabetycznie","Wyniki":[{"id":116,"firstname":"Ada","lastname":"Sidonius","email":"Ada.Sidonius@yopmail.com","email2":"Ada.Sidonius@gmail.com","profession":"doctor"},{"id":1190,"firstname":"Ada","lastname":"Candy","email":"Ada.Candy@yopmail.com","email2":"Ada.Candy@gmail.com","profession":"worker"},{"id":1942,"firstname":"Ada","lastname":"Gladstone","email":"Ada.Gladstone@yopmail.com","email2":"Ada.Gladstone@gmail.com","profession":"developer"}]}{"Czynnosc":"Filtrowanie","Wedlug":"AbbieMagnolia","Jak":null,"Wyniki":[{"id":243,"firstname":"Abbie","lastname":"Magnolia","email":"Abbie.Magnolia@yopmail.com","email2":"Abbie.Magnolia@gmail.com","profession":"doctor"}]}{"Czynnosc":"Filtrowanie","Wedlug":"AbbieMagnolia","Jak":null,"Wyniki":[{"id":243,"firstname":"Abbie","lastname":"Magnolia","email":"Abbie.Magnolia@yopmail.com","email2":"Abbie.Magnolia@gmail.com","profession":"doctor"}]}{"Czynnosc":"Filtrowanie","Wedlug":"Ada","Jak":null,"Wyniki":[{"id":116,"firstname":"Ada","lastname":"Sidonius","email":"Ada.Sidonius@yopmail.com","email2":"Ada.Sidonius@gmail.com","profession":"doctor"},{"id":1190,"firstname":"Ada","lastname":"Candy","email":"Ada.Candy@yopmail.com","email2":"Ada.Candy@gmail.com","profession":"worker"},{"id":1942,"firstname":"Ada","lastname":"Gladstone","email":"Ada.Gladstone@yopmail.com","email2":"Ada.Gladstone@gmail.com","profession":"developer"}]}{"Czynnosc":"Filtrowanie","Wedlug":"Aaren","Jak":null,"Wyniki":"340,Aaren,Brandice,Aaren.Brandice@yopmail.com,Aaren.Brandice@gmail.com,firefighter,\r\n659,Aaren,Reidar,Aaren.Reidar@yopmail.com,Aaren.Reidar@gmail.com,firefighter,\r\n890,Aaren,Grobe,Aaren.Grobe@yopmail.com,Aaren.Grobe@gmail.com,developer,\r\n1187,Aaren,Newell,Aaren.Newell@yopmail.com,Aaren.Newell@gmail.com,police officer,\r\n"}{"Czynnosc":"Filtrowanie","Wedlug":"Ada","Jak":null,"Wyniki":"116,Ada,Sidonius,Ada.Sidonius@yopmail.com,Ada.Sidonius@gmail.com,doctor,\r\n1190,Ada,Candy,Ada.Candy@yopmail.com,Ada.Candy@gmail.com,worker,\r\n1942,Ada,Gladstone,Ada.Gladstone@yopmail.com,Ada.Gladstone@gmail.com,developer,\r\n"}linq_program.Form1+Wynik
+linq_program.Form1+Wynik
+linq_program.Form1+Wynik
+Filtrowanie; ; Ada; ; 116,Ada,Sidonius,Ada.Sidonius@yopmail.com,Ada.Sidonius@gmail.com,doctor,
+1190,Ada,Candy,Ada.Candy@yopmail.com,Ada.Candy@gmail.com,worker,
+1942,Ada,Gladstone,Ada.Gladstone@yopmail.com,Ada.Gladstone@gmail.com,developer,
+
+Filtrowanie; ; Aeriela; ; 476,Aeriela,Gusella,Aeriela.Gusella@yopmail.com,Aeriela.Gusella@gmail.com,doctor,
+1017,Aeriela,Adamsen,Aeriela.Adamsen@yopmail.com,Aeriela.Adamsen@gmail.com,firefighter,
+
+Filtrowanie; ; Ana; ; 779,Ana,Stoller,Ana.Stoller@yopmail.com,Ana.Stoller@gmail.com,firefighter,
+1208,Ana,Baylor,Ana.Baylor@yopmail.com,Ana.Baylor@gmail.com,worker,
+

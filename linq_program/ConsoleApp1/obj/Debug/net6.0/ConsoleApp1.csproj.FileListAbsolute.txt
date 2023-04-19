@@ -1,0 +1,17 @@
+X:\GIT\LINQ\linq_program\ConsoleApp1\bin\Debug\net6.0\ConsoleApp1.exe
+X:\GIT\LINQ\linq_program\ConsoleApp1\bin\Debug\net6.0\ConsoleApp1.deps.json
+X:\GIT\LINQ\linq_program\ConsoleApp1\bin\Debug\net6.0\ConsoleApp1.runtimeconfig.json
+X:\GIT\LINQ\linq_program\ConsoleApp1\bin\Debug\net6.0\ConsoleApp1.dll
+X:\GIT\LINQ\linq_program\ConsoleApp1\bin\Debug\net6.0\ConsoleApp1.pdb
+X:\GIT\LINQ\linq_program\ConsoleApp1\bin\Debug\net6.0\Newtonsoft.Json.dll
+X:\GIT\LINQ\linq_program\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.csproj.AssemblyReference.cache
+X:\GIT\LINQ\linq_program\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+X:\GIT\LINQ\linq_program\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.AssemblyInfoInputs.cache
+X:\GIT\LINQ\linq_program\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.AssemblyInfo.cs
+X:\GIT\LINQ\linq_program\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.csproj.CoreCompileInputs.cache
+X:\GIT\LINQ\linq_program\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.csproj.CopyComplete
+X:\GIT\LINQ\linq_program\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.dll
+X:\GIT\LINQ\linq_program\ConsoleApp1\obj\Debug\net6.0\refint\ConsoleApp1.dll
+X:\GIT\LINQ\linq_program\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.pdb
+X:\GIT\LINQ\linq_program\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.genruntimeconfig.cache
+X:\GIT\LINQ\linq_program\ConsoleApp1\obj\Debug\net6.0\ref\ConsoleApp1.dll
