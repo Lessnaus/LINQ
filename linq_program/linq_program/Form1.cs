@@ -30,10 +30,7 @@ namespace linq_program
 
         private void button2_Click(object sender, EventArgs e)
         {
-            String czynnosc = "Filtr";
-            String imie = "";
-            String nazwisko = "";
-            String stanowisko = "";
+            
 
             dataGridView1.Visible = true;
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "linq.csv");
@@ -148,7 +145,7 @@ namespace linq_program
 
         private void buttonSort_Click(object sender, EventArgs e)
         {
-            string czynnosc = "Sortowanie";
+            
             string savePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wyniki.txt");
             // Pobierz kolumnę, według której sortować, z combobox1
             string columnName = comboBox4.SelectedItem.ToString();
